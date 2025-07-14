@@ -21,6 +21,6 @@ $sql = "INSERT INTO membre(nom, date_naissance, genre, email, ville, mdp, image_
 $sql = sprintf($sql, $nom, $date_naissance, $genre, $email, $ville, $mdp, $chemin_image);
 
 mysqli_query($bdd, $sql);
-header('Location: login.php');
+header('Location: accueil.php');
 exit();
 ?>
