@@ -1,4 +1,4 @@
-*creer base de donnee partage_objets:
+creer base de donnee partage_objets:(Jimmy)
     .creer tableau:
         -tableau membre
         -tableau categorie_objet
@@ -6,11 +6,19 @@
         -images_objet
         -emprunt
 
-    .inserer donne:
+    .inserer donne:(Jimmy)
         -4 membres
         -4 categorie
         -10 objet par membre
         -10 emprunts
 
-creer connexion.php
-    connexion a la base
+creer connexion.php(Anthony)
+    connexion a la base(Anthony)ok
+
+creation du login
+    function verifier, connecter 
+    page de formulaire
+    traitementlogin
+
+
+
