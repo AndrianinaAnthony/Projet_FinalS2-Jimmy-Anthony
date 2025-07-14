@@ -1,6 +1,6 @@
 <?php
     function verifier_utilisateur($bdd, $email, $mdp){
-        $sql="SELECT * FROM membre WHERE email='%s' AND mdp ='%s'";
+        $sql="SELECT * FROM emprunt_membre WHERE email='%s' AND mdp ='%s'";
         $sql = sprintf($sql, $email, $mdp);
         $resultat= mysqli_query($bdd, $sql);
         return mysqli_fetch_assoc($resultat);

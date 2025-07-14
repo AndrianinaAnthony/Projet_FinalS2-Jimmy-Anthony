@@ -2,7 +2,7 @@ CREATE DATABASE IF NOT EXISTS partage_objets;
 USE partage_objets;
 
 -- Table des membres
-CREATE TABLE membre (
+CREATE TABLE emprunt_membre (
     id_membre INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(100),
     date_naissance DATE,
@@ -14,54 +14,54 @@ CREATE TABLE membre (
 );
 
 -- Table des catégories d'objet
-CREATE TABLE categorie_objet (
+CREATE TABLE emprunt_categorie_objet (
     id_categorie INT AUTO_INCREMENT PRIMARY KEY,
     nom_categorie VARCHAR(100)
 );
 
 -- Table des objets
-CREATE TABLE objet (
+CREATE TABLE emprunt_objet (
     id_objet INT AUTO_INCREMENT PRIMARY KEY,
     nom_objet VARCHAR(100),
     id_categorie INT,
     id_membre INT,
-    FOREIGN KEY (id_categorie) REFERENCES categorie_objet(id_categorie),
-    FOREIGN KEY (id_membre) REFERENCES membre(id_membre)
+    FOREIGN KEY (id_categorie) REFERENCES emprunt_categorie_objet(id_categorie),
+    FOREIGN KEY (id_membre) REFERENCES emprunt_membre(id_membre)
 );
 
 -- Table des images des objets
-CREATE TABLE images_objet (
+CREATE TABLE emprunt_images_objet (
     id_image INT AUTO_INCREMENT PRIMARY KEY,
     id_objet INT,
     nom_image VARCHAR(255),
-    FOREIGN KEY (id_objet) REFERENCES objet(id_objet)
+    FOREIGN KEY (id_objet) REFERENCES emprunt_objet(id_objet)
 );
 
 -- Table des emprunts
-CREATE TABLE emprunt (
+CREATE TABLE emprunt_emprunt (
     id_emprunt INT AUTO_INCREMENT PRIMARY KEY,
     id_objet INT,
     id_membre INT,
     date_emprunt DATE,
     date_retour DATE,
-    FOREIGN KEY (id_objet) REFERENCES objet(id_objet),
-    FOREIGN KEY (id_membre) REFERENCES membre(id_membre)
+    FOREIGN KEY (id_objet) REFERENCES emprunt_objet(id_objet),
+    FOREIGN KEY (id_membre) REFERENCES emprunt_membre(id_membre)
 );
 
-INSERT INTO membre (nom, date_naissance, genre, email, ville, mdp, image_profil) VALUES
+INSERT INTO emprunt_membre (nom, date_naissance, genre, email, ville, mdp, image_profil) VALUES
 ('Alice', '1995-04-12', 'Femme', 'alice@example.com', 'Antananarivo', 'pass123', 'alice.jpg'),
 ('Bob', '1990-07-23', 'Homme', 'bob@example.com', 'Toamasina', 'pass123', 'bob.jpg'),
 ('Charlie', '1988-12-01', 'Homme', 'charlie@example.com', 'Fianarantsoa', 'pass123', 'charlie.jpg'),
 ('Dina', '2000-03-15', 'Femme', 'dina@example.com', 'Mahajanga', 'pass123', 'dina.jpg');
 
-INSERT INTO categorie_objet (nom_categorie) VALUES
+INSERT INTO emprunt_categorie_objet (nom_categorie) VALUES
 ('Esthétique'),
 ('Bricolage'),
 ('Mécanique'),
 ('Cuisine');
 
 -- Pour Alice (id_membre = 1)
-INSERT INTO objet (nom_objet, id_categorie, id_membre) VALUES
+INSERT INTO emprunt_objet (nom_objet, id_categorie, id_membre) VALUES
 ('Sèche-cheveux', 1, 1),
 ('Parfum floral', 1, 1),
 ('Trousse maquillage', 1, 1),
@@ -109,7 +109,7 @@ INSERT INTO objet (nom_objet, id_categorie, id_membre) VALUES
 ('Fer à boucler', 1, 4),
 ('Batteur', 4, 4);
 
-INSERT INTO emprunt (id_objet, id_membre, date_emprunt, date_retour) VALUES
+INSERT INTO emprunt_emprunt (id_objet, id_membre, date_emprunt, date_retour) VALUES
 (5, 2, '2025-07-01', '2025-07-10'),
 (12, 1, '2025-07-02', '2025-07-12'),
 (20, 3, '2025-07-03', '2025-07-13'),

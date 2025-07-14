@@ -16,7 +16,7 @@ $chemin_image = '';
 move_uploaded_file($_FILES['image_profil']['tmp_name'], '../uploads/' . $image);
 $chemin_image = $image;
 
-$sql = "INSERT INTO membre(nom, date_naissance, genre, email, ville, mdp, image_profil) 
+$sql = "INSERT INTO emprunt_membre(nom, date_naissance, genre, email, ville, mdp, image_profil) 
         VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s')";
 $sql = sprintf($sql, $nom, $date_naissance, $genre, $email, $ville, $mdp, $chemin_image);
 

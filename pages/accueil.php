@@ -16,13 +16,13 @@ if (isset($_GET['categorie'])) {
 }
 
 
-$sql = "SELECT objet.*, categorie_objet.nom_categorie, emprunt.date_retour 
+$sql = "SELECT objet.*, emprunt_categorie_objet.nom_categorie, emprunt_emprunt.date_retour 
         FROM objet
-        INNER JOIN categorie_objet ON objet.id_categorie = categorie_objet.id_categorie
-        LEFT JOIN emprunt ON objet.id_objet = emprunt.id_objet";
+        INNER JOIN emprunt_categorie_objet ON emprunt_objet.id_categorie = emprunt_categorie_objet.id_categorie
+        LEFT JOIN emprunt_emprunt ON emprunt_objet.id_objet = emprunt_emprunt.id_objet";
 
 if ($id_categorie !== "") {
-    $sql .= " WHERE objet.id_categorie = " . $id_categorie;
+    $sql .= " WHERE emprunt_objet.id_categorie = " . $id_categorie;
 }
 
 $resultat_objets = mysqli_query($bdd, $sql);
